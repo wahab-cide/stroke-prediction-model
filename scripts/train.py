@@ -13,6 +13,9 @@ X, y = load_and_preprocess_data(file_path)
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
+print(X_train.columns)
+
+
 # initialize the Random Forest model
 rf_model = RandomForestClassifier(random_state=42)
 
@@ -45,14 +48,14 @@ print("Classification Report:")
 print(classification_rep)
 
 # save the trained model to a file
-model_file_path = '../model/stroke_prediction_model.pkl'
 
 
-model_dir = '../model'
+model_file_path = './model/stroke_prediction_model.pkl'
+model_dir = './model'
 if not os.path.exists(model_dir):
     os.makedirs(model_dir)
 
 with open(model_file_path, 'wb') as f:
     pickle.dump(best_rf_model, f)
 
-#print(f"Trained model saved to {model_file_path}")
+print(f"Trained model saved to {model_file_path}")
